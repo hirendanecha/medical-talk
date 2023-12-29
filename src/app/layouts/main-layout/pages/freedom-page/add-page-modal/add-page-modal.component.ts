@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./add-page-modal.component.scss'],
 })
 export class AddFreedomPageComponent implements OnInit, AfterViewInit {
-  @Input() title: string | undefined = 'Create Health Topics';
+  @Input() title: string | undefined = 'Create Medical Pages';
   @Input() cancelButtonLabel: string | undefined = 'Cancel';
   @Input() confirmButtonLabel: string | undefined = 'Create';
   @Input() closeIcon: boolean | undefined;
@@ -199,13 +199,13 @@ export class AddFreedomPageComponent implements OnInit, AfterViewInit {
                 this.createAdvertizeMentLink(res.data);
                 this.createCommunityAdmin(res.data);
                 this.activeModal.close('success');
-                this.toastService.success('Health Topic created successfully');
+                this.toastService.success('Medical Pages created successfully');
                 // this.router.navigateByUrl('/home');
               }
             },
             error:
               (err) => {
-                this.toastService.danger('Please change topic name. this topic name already in use.');
+                this.toastService.danger('Please change page name. this page name already in use.');
                 this.spinner.hide();
               }
           });
@@ -228,13 +228,13 @@ export class AddFreedomPageComponent implements OnInit, AfterViewInit {
               if (!res.error) {
                 this.submitted = true;
                 // this.createCommunityAdmin(res.data);
-                this.toastService.success('Your Health Topic edit successfully!');
+                this.toastService.success('Your page edit successfully!');
                 this.activeModal.close('success');
               }
             },
             error:
               (err) => {
-                this.toastService.danger('Please change topic name. this topic name already in use.');
+                this.toastService.danger('Please change page name. this page name already in use.');
                 this.spinner.hide();
               }
           });
