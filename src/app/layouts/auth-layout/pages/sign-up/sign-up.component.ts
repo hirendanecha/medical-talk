@@ -66,10 +66,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     private seoService: SeoService
   ) {
     const data = {
-      title: 'HealingTube Registration',
+      title: 'MedicalTalk Registration',
       url: `${environment.webUrl}sign-up`,
       description: 'Registration page',
-      image: `${environment.webUrl}assets/images/landingpage/Healing-Tube-Logo.png`,
+      image: `${environment.webUrl}assets/images/landingpage/Medicaltalk-Banner.jpg`,
     };
     // this.seoService.updateSeoMetaData(data);
   }

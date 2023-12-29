@@ -88,13 +88,13 @@ export function app(): express.Express {
           description:
             'Private video consultations with Naturopathic Doctors and Holistic Healers from around the world. Social Discussion on how to heal various ailments.',
           image:
-            'https://www.medicaltalk.tube/assets/images/Ht-Profile-pic-default.png',
+            'https://www.medicaltalk.tube/assets/images/landingpage/Medicaltalk-Banner.jpg',
           site: 'https://www.medicaltalk.tube/',
           url: 'https://www.medicaltalk.tube' + params,
           keywords: 'Medicaltalk Tube',
         };
         if (
-          params.indexOf('communities/') > -1 ||
+          params.indexOf('doctors/') > -1 ||
           params.indexOf('pages/') > -1
         ) {
           let id = params.split('/');
@@ -155,7 +155,7 @@ export function app(): express.Express {
           const talent = {
             name: post?.title || post?.albumname || 'medicaltalk.Tube Post',
             description: pdhtml?.textContent || 'Post content',
-            image: post?.thumbfilename || post?.metaimage || post?.imageUrl || 'https://www.medicaltalk.tube/assets/images/Ht-Profile-pic-default.png',
+            image: post?.thumbfilename || post?.metaimage || post?.imageUrl || 'https://www.medicaltalk.tube/assets/images/landingpage/Medicaltalk-Banner.jpg',
           };
           seo.title = talent.name;
           seo.description = strip_html_tags(talent.description);
