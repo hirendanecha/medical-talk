@@ -84,14 +84,14 @@ export function app(): express.Express {
         }
         const params = req.params[0];
         var seo: any = {
-          title: 'Medicaltalk Tube',
+          title: 'Medicaltalk.Tube',
           description:
             'Speak face-to-face with medical doctors locally or worldwide',
           image:
             'https://www.medicaltalk.tube/assets/images/landingpage/Medicaltalk-Banner.jpg',
           site: 'https://www.medicaltalk.tube/',
           url: 'https://www.medicaltalk.tube' + params,
-          keywords: 'Medicaltalk Tube',
+          keywords: 'Medicaltalk.Tube',
         };
         if (
           params.indexOf('doctors/') > -1 ||
