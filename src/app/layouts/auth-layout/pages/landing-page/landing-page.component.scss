@@ -7,16 +7,11 @@
     font-size: min(max(16px, 1vw), 22px);
   }
   .c-fonts {
-    // font-size: min(max(25px, 2vw), 44px);
-    font-size: 22px;
-    
-    @media (max-width: 999px) {
-      font-size: 16px;
-    }
+    font-size: min(max(25px, 2vw), 40px);
   }
 
   .custom-height {
-    background-image: url(/assets/images/landingpage/MedicalTalk-home.jpg);
+    background-image: url(/assets/images/landingpage/medical-hm-pg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
@@ -25,12 +20,12 @@
     min-height: 400px;
 
     .banner-text {
-      max-width: 600px;
+      max-width: 400px;
       width: 100%;
       background-color: #0b0d0ed4;
       border-radius: 5px;
       padding: 40px;
-      height: 300px;
+      // height: 300px;
     }
 
     @media (max-width: 600px) {
