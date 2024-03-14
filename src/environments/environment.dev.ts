@@ -12,5 +12,7 @@ export const environment = {
   socketUrl: `${url}/`,
   webUrl: webUrl,
   tubeUrl: tubeUrl,
-  domain: '.medicaltalk.tube'
+  domain: '.medicaltalk.tube',
+  siteKey:'0x4AAAAAAAUxBqTaVY0yZf_2',
+  secretKey:'0x4AAAAAAAUxBtoVmvpXvvrqwHCCF-euUSc'
 };
