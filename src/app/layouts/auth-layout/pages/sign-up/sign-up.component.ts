@@ -58,6 +58,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   });
 
   theme = '';
+  passwordHidden: boolean = true;
+
   @ViewChild('captcha', { static: true }) captchaElement:ElementRef
   constructor(
     private spinner: NgxSpinnerService,
@@ -209,6 +211,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     return true;
   }
 
+  togglePasswordVisibility(passwordInput: HTMLInputElement) {
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    this.passwordHidden = !this.passwordHidden;
+  }
   onSubmit(): void {
     this.msg = '';
     // if (!this.profileImg?.file?.name) {
