@@ -16,6 +16,23 @@
       [formGroup]="communityForm"
       (ngSubmit)="uploadImgAndSubmit()"
     >
+    <div class="d-flex gap-4 mb-3">
+      <div *ngFor="let application of applyAs">
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input"
+            type="radio"
+            [value]="application"
+            id="modality{{ application }}"
+            (change)="applicationChange(application)"
+            [checked]="application === selectedApplication"
+          />
+          <label class="form-check-label ms-2 text-nowrap" for="modality{{ application }}">
+            {{ application }}
+          </label>
+        </div>
+      </div>
+    </div>
       <div class="col-12 mb-5">
         <label class="form-label d-flex"
           >Doctor's Name<span class="text-danger">*</span></label

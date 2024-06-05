@@ -29,63 +29,257 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
   selectedAreaValues: number[] = [];
 
   selectedCards: any[] = [];
-  cards: any[] = [
+  medicalSpecialties: any[] = [
     {
-      title: 'Botanical Medicine',
       id: 1,
-      description: `Plant-based supplements, tinctures, and topical applications that
-    assist the body in healing. These may include either western or
-    oriental herbal formulas with time-honored traditional healing
-    applications for various symptoms and conditions.`,
+      title: 'Allergists/Immunologists',
+      details: [
+        'Allergy testing',
+        'Managing allergy treatment',
+        'Diagnosing and treating asthma',
+        'Diagnosing and treating immune deficiency disorders'
+      ]
     },
     {
-      title: 'Homeopathy',
       id: 2,
-      description: `Gentle effective therapy that utilizes a minute amount of a
-    potentized substance to promote a beneficial healing response.`,
+      title: 'Cardiologists',
+      details: [
+        'Cardiac catheterization',
+        'Pacemaker placement',
+        'Arrhythmia ablation'
+      ]
     },
     {
-      title: 'Hydrotherapy',
       id: 3,
-      description: `An important healing modality in traditional naturopathic
-    medicine. Hydrotherapy utilizes the therapeutic benefits of water.
-    It includes application of cool or warm water in specialized
-    compresses or baths.`,
+      title: 'Dermatologists',
+      description: 'Dermatology specialists focus on skin, hair, and nails.'
     },
     {
-      title: 'Nutritional Counseling',
       id: 4,
-      description: `Nutritional supplementation, dietary assessment, and advice in
-    making the best food choices based on your unique health history
-    and individual needs.`,
+      title: 'Endocrinologists',
+      details: [
+        'Diabetes',
+        'Thyroid problems',
+        'Growth disorders',
+        'Adrenal gland disorders'
+      ]
     },
     {
-      title: 'Lifestyle Counseling',
       id: 5,
-      description: `Help in making new choices that are healthier for you physically,
-    emotionally, and psychologically.`,
+      title: 'Gastroenterologists',
+      details: [
+        'Esophagus',
+        'Stomach',
+        'Intestines',
+        'Liver',
+        'Gallbladder',
+        'Pancreas'
+      ]
     },
     {
-      title: 'Touch for Health',
       id: 6,
-      description: ` Touch for Health is a system of balancing posture, attitude and
-    life energy to relieve stress, aches and pains, feel and function
-    better, be more effective, clarify and achieve your goals and
-    enjoy your life! Using a holistic approach we
-    rebalance the body's energies and
-    activate the body's intrinsic healing process so
-    that the body can better heal itself, creating that sense of
-    effortless effort, and being in the flow of Life.`,
+      title: 'Geriatrician',
+      description: 'Geriatric medicine specialists focus on the care for senior citizens and amazing mature humans!'
     },
     {
-      title: `German New Medicine, Spiritual, Psychosomatic or related healing modalities`,
       id: 7,
-      description: `Various paradigms of medicine, that recognizes the profound
-    effects of how an individual's consciousness is reflected in their
-    health and well-being. It involves awakening the body's inherent
-    self-healing properties. German New Medicine is founded of medical
-    discoveries of Dr. med. Ryke Geerd Hamer`,
+      title: 'Hematologist-oncologist',
+      description: 'Hematology-oncology specialists diagnose and treat blood disorders and many different types of blood cancers.'
     },
+    {
+      id: 8,
+      title: 'Infectious disease',
+      details: [
+        'HIV/AIDS',
+        'Tuberculosis',
+        'Lyme disease',
+        'Complex infections in people with weakened immune systems'
+      ]
+    },
+    {
+      id: 9,
+      title: 'Nephrologists',
+      description: 'Nephrology specialists focus on diagnosing and treating problems related to kidney function.'
+    },
+    {
+      id: 10,
+      title: 'Neurologist',
+      details: [
+        'Dementia',
+        'Stroke',
+        'Migraines',
+        'Multiple sclerosis',
+        'Seizures'
+      ]
+    },
+    {
+      id: 11,
+      title: 'Oncologist',
+      description: 'Oncology specialists care for people with cancer.'
+    },
+    {
+      id: 12,
+      title: 'Palliative care doctor',
+      description: 'Palliative care specialists focus on increasing comfort and the quality of life for people with illness at any stage of disease.'
+    },
+    {
+      id: 13,
+      title: 'Physiatrist',
+      description: 'Physical medicine and rehabilitation specialists are known as physiatrists. These doctors help treat problems of the brain, spinal cord, as well as muscles and bones.'
+    },
+    {
+      id: 14,
+      title: 'Psychiatrist',
+      description: 'Psychiatrists are medical specialists who focus on mental health.'
+    },
+    {
+      id: 15,
+      title: 'Pulmonologist',
+      details: [
+        'Bronchoscopy',
+        'Spirometry',
+        'Airway stent placement'
+      ]
+    },
+    {
+      id: 16,
+      title: 'Rheumatologist',
+      details: [
+        'Joints',
+        'Bones',
+        'Muscles',
+        'Tendons',
+        'Ligaments'
+      ]
+    },
+    {
+      id: 17,
+      title: 'Pediatrician',
+      description: 'Pediatricians specialize in children’s medicine.'
+    }
+  ];
+
+  surgicalSpecialties: any[] = [
+    {
+      id: 18,
+      title: 'General surgeon',
+      description: 'General surgeons treat a wide variety of problems that involve organs of the abdomen, the skin and soft tissues, breast, neck, and other areas.',
+      details: [
+        'Trauma surgery',
+        'Breast surgery',
+        'Cancer surgery',
+        'Critical care surgery'
+      ]
+    },
+    {
+      id: 19,
+      title: 'Colorectal surgeon',
+      description: 'Colorectal surgeons specialize in treating diseases of the:',
+      details: [
+        'Intestinal tract',
+        'Colon',
+        'Rectum',
+        'Anal canal',
+        'Perianal area'
+      ]
+    },
+    {
+      id: 20,
+      title: 'Pediatric surgeon',
+      description: 'Pediatric surgeons treat diseases that need surgery in children.'
+    },
+    {
+      id: 21,
+      title: 'Plastic surgeon',
+      details: [
+        'Breast reconstruction after breast cancer surgery',
+        'Cleft lip and palate repair',
+        'Hand surgery',
+        'Surgeries to treat scars'
+      ]
+    },
+    {
+      id: 22,
+      title: 'Orthopedic surgeon',
+      description: 'Orthopedic surgeons specialize in managing problems of the bones, muscles, ligaments, and tendons in the body.'
+    },
+    {
+      id: 23,
+      title: 'Otolaryngologist',
+      description: 'Otolaryngologists (ENT) are surgeons who treat medical problems of the head and neck.'
+    },
+    {
+      id: 24,
+      title: 'Oral and maxillofacial surgeon',
+      description: 'Oral and maxillofacial surgeons (OMFS) focus on surgery of the head, neck, face, mouth, and jaw.'
+    },
+    {
+      id: 25,
+      title: 'Neurosurgeon',
+      description: 'Neurosurgeons perform surgery on the brain and spinal cord to help treat neurologic diseases.',
+      details: [
+        'Brain tumors',
+        'Seizures',
+        'Brain aneurysms',
+        'Spinal cord problems'
+      ]
+    },
+    {
+      id: 26,
+      title: 'Thoracic surgeon',
+      description: 'Thoracic surgeons perform surgery on the organs in the chest.',
+      details: [
+        'Heart disease',
+        'Emphysema',
+        'Lung cancer',
+        'Problems of the large blood vessels in the chest',
+        'Esophageal cancer'
+      ]
+    },
+    {
+      id: 27,
+      title: 'Vascular surgeon',
+      description: 'Vascular surgeons treat diseases of the blood vessels in your body, except those in the brain and heart.'
+    },
+    {
+      id: 28,
+      title: 'Obstetrician-gynecologist',
+      description: 'Obstetrician-gynecologists (OB-GYN) specialize in care for those assigned female at birth.',
+      details: [
+        'High-risk pregnancies',
+        'Fertility problems',
+        'Gynecologic cancers'
+      ]
+    },
+    {
+      id: 29,
+      title: 'Urologist',
+      description: 'Urologists diagnose and treat medical and surgical problems of the urinary tract.',
+      details: [
+        'Kidney',
+        'Ureter',
+        'Bladder',
+        'Adrenal glands'
+      ]
+    },
+    {
+      id: 30,
+      title: 'Ophthalmologist',
+      description: 'Ophthalmologists are the “eye doctors.” These specialists diagnose and treat medical and surgical problems of the eyes.'
+    },
+    {
+      id: 31,
+      title: 'Anesthesiologist',
+      description: 'Anesthesiologists care for people who need sedation for surgery and other types of medical procedures.'
+    },
+    {
+      id: 32,
+      title: 'Radiologist',
+      description: 'Radiologists are doctors who specialize in performing and interpreting medical imaging.',
+      details: [
+        'Stent placement'
+      ]
+    }
   ];
 
   isFromHome = false;
@@ -180,6 +374,7 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
   selectCard(cardId: string): void {
     const index = this.selectedCards.indexOf(cardId);
     if (index === -1) {
+      this.selectedCards = [];
       this.selectedCards.push(cardId);
     } else {
       this.selectedCards = this.selectedCards.filter(id => id !== cardId);
@@ -218,6 +413,7 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
     this.communityService.getCategories().subscribe({
       next: (res) => {
         this.practitionerArea = res.area;
+        // this.cards = res.emphasis;
       },
       error: (error) => {
         this.spinner.hide();

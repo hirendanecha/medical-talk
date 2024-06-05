@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-community-modal.component.scss'],
 })
 export class AddCommunityModalComponent implements OnInit, AfterViewInit {
-  @Input() title: string | undefined = 'Apply to be Doctor';
+  @Input() title: string | undefined = 'Application';
   @Input() cancelButtonLabel: string | undefined = 'Cancel';
   @Input() confirmButtonLabel: string | undefined = 'Create';
   @Input() closeIcon: boolean | undefined;
@@ -54,7 +54,8 @@ export class AddCommunityModalComponent implements OnInit, AfterViewInit {
   practitionerEmphasis: any = [];
   selectedValues: number[] = [];
   selectedAreaValues: number[] = [];
-
+  applyAs: any[] = ['Medical specialists', 'Surgical specialists'];
+  selectedApplication: string = 'Medical specialists';
   communityForm = new FormGroup({
     profileId: new FormControl(),
     CommunityName: new FormControl(''),
@@ -174,6 +175,7 @@ export class AddCommunityModalComponent implements OnInit, AfterViewInit {
       const formData = this.communityForm.value;
       formData['emphasis'] = this.selectedValues;
       formData['areas'] = this.selectedAreaValues;
+      formData['applicationType'] = this.selectedApplication;
       if (this.communityForm.valid) {
         this.communityService.createCommunity(formData).subscribe({
           next: (res: any) => {
@@ -356,5 +358,9 @@ export class AddCommunityModalComponent implements OnInit, AfterViewInit {
     let inputValue = inputElement.value;
     inputValue = inputValue.replace(/\s/g, '');
     inputElement.value = inputValue.toUpperCase();
+  }
+
+  applicationChange(application: string) {
+    this.selectedApplication = application;
   }
 }

@@ -1,4 +1,4 @@
-.healing-registration-container{
+.healing-registration-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -6,8 +6,13 @@
   margin: auto;
   justify-content: center;
 
-  h2{
+  h2 {
     text-transform: none;
+  }
+  .doctor-introduction {
+    ul li {
+      list-style-type: disc;
+    }
   }
 
   .card {
@@ -16,7 +21,7 @@
     box-shadow: var(--box-shadow);
     border-radius: 10px;
     margin: 15px;
-  
+
     .card-body {
       display: flex;
       flex-direction: column;
@@ -35,7 +40,7 @@
   margin-bottom: 5px;
 }
 
-.container{
+.container {
   background: var(--section-1st-color);
   box-shadow: var(--box-shadow);
   border-radius: 10px;
@@ -43,16 +48,16 @@
 }
 
 .form-check,
-.form-check-label{
+.form-check-label {
   display: flex;
   align-items: center;
 }
-.selectCountry{
+.selectCountry {
   display: flex;
   white-space: nowrap;
   margin: 0 8px;
 
-  select{
+  select {
     margin: 0 8px;
     max-width: 210px;
 
@@ -62,21 +67,21 @@
   }
 }
 
-.healing-sub-container{
+.healing-sub-container {
   .card {
     width: 294px;
     background: var(--section-1st-color);
     box-shadow: var(--box-shadow);
     border-radius: 10px;
     margin: 10px;
-  
+
     .card-body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 23px;
 
-      .card-title{
+      .card-title {
         border-bottom: 1px solid var(--font-icon-color);
       }
     }
@@ -85,5 +90,11 @@
       font-size: 16px;
       line-height: 22px;
     }
+  }
+}
+.card-introduction {
+  ul li {
+    list-style-type: disc;
+    text-align: start;
   }
 }

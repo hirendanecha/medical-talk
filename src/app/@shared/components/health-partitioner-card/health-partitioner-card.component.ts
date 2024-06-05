@@ -13,8 +13,7 @@ import { ToastService } from 'src/app/@shared/services/toast.service';
 export class HealthPraatitionerCardComponent {
   @Input('community') community: any = {};
   @Input('type') type: string = '';
-  @Output('getCommunities') getCommunities: EventEmitter<void> =
-    new EventEmitter<void>();
+  @Output('getCommunities') getCommunities: EventEmitter<void> = new EventEmitter<void>();
 
   profileId: number = null;
 

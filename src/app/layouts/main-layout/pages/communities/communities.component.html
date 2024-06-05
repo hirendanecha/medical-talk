@@ -6,8 +6,8 @@
       class="nav flex-wrap tab-area">
       <li ngbNavItem="local">
         <button ngbNavLink class="d-flex gap-1">
-          All
-          <div class="d-xl-block">Doctors</div>
+          Providers within your area
+          <!-- <div class="d-xl-block">Doctors</div> -->
         </button>
       </li>
     </ul>
@@ -16,8 +16,8 @@
   <div class="btn-item text-center">
     <button class="btn btn-sm btn-primary gap-1 d-flex align-items-center m-auto mt-1" (click)="createCommunity()">
       <fa-icon [icon]="['fas', 'plus']" class="c-icon-color" />
-      Apply to be
-      <div class="d-none d-sm-block">Doctors</div>
+      Apply to be a specialist
+      <!-- <div class="d-none d-sm-block">Doctors</div> -->
       <!-- <div class="d-none d-xl-block">Doctors</div> -->
     </button>
   </div>
@@ -41,7 +41,7 @@
     <app-inline-loader *ngIf="isCommunityLoader" />
 
     <ng-container *ngIf="!isCommunityLoader">
-      <span>No doctor found</span>
+      <span>No Specialist Found</span>
     </ng-container>
   </ng-container>
 </div>
