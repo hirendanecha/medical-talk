@@ -18,6 +18,7 @@ import { CustomerService } from 'src/app/@shared/services/customer.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UploadFilesService } from 'src/app/@shared/services/upload-files.service';
 import { Router } from '@angular/router';
+import { SeoService } from 'src/app/@shared/services/seo.service';
 
 @Component({
   selector: 'app-add-community-modal',
@@ -80,11 +81,21 @@ export class AddCommunityModalComponent implements OnInit, AfterViewInit {
     private toastService: ToastService,
     private customerService: CustomerService,
     private uploadService: UploadFilesService,
-    private router: Router
+    private router: Router,
+    private seoService: SeoService,
   ) {
     this.userId = window.sessionStorage.user_id;
     this.profileId = localStorage.getItem('profileId');
+    const data = {
+      title: 'MedicalTalk',
+      url: `${environment.webUrl}medical-registration`,
+      description: '',
+      image: `${environment.webUrl}assets/images/landingpage/Medicaltalk-Banner.jpg`,
+    };
+    this.seoService.updateSeoMetaData(data);
   }
+
+
 
   ngOnInit(): void {
     this.getAllCountries();
