@@ -8,6 +8,7 @@
     <div class="profile-pic d-flex gap-2" routerLink="/home">
       <div class="position-relative">
         <img
+          (click)="uniqueLink()"
           class="avatar-img max-un"
           loading="lazy"
           data-src="{{ sharedService?.userData?.ProfilePicName }}"

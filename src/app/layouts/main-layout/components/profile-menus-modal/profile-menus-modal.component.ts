@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal, NgbActiveOffcanvas, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
+import { ConferenceLinkComponent } from 'src/app/@shared/modals/create-conference-link/conference-link-modal.component';
 import { CustomerService } from 'src/app/@shared/services/customer.service';
 import { SharedService } from 'src/app/@shared/services/shared.service';
 import { ToastService } from 'src/app/@shared/services/toast.service';
@@ -12,7 +13,7 @@ import { ForgotPasswordComponent } from 'src/app/layouts/auth-layout/pages/forgo
   selector: 'app-profile-menus-modal',
   templateUrl: './profile-menus-modal.component.html',
   styleUrls: ['./profile-menus-modal.component.scss']
-})
+})  
 export class ProfileMenusModalComponent {
   profileId: number;
   userId: number
@@ -45,6 +46,9 @@ export class ProfileMenusModalComponent {
           break;
         case 'setting':
           this.goToSetting();
+          break;
+        case 'uniqueLink':
+          this.uniqueLink();
           break;
         case 'change-password':
           this.forgotPasswordOpen();
@@ -93,5 +97,10 @@ export class ProfileMenusModalComponent {
     // modelRef.result.then(res => {
     //   return res = user_id
     // });
+  }
+  uniqueLink(){
+    const modalRef = this.modalService.open(ConferenceLinkComponent, {
+      centered: true,
+    });
   }
 }
