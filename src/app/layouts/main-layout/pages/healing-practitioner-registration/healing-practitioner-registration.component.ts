@@ -332,7 +332,7 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
     if (!localUserData) {
       this.sharedService.getUserDetails();
     }
-    this.getAllCountries();
+    // this.getAllCountries();
     this.getCategories();
   }
 
@@ -404,9 +404,9 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
     if (this.selectedCards.length > 0) {
       const practitionerRequirements = {
         selectedCard: this.selectedCards,
-        selectedCountry: this.selectedCountry,
-        selectedState: this.selectedState,
         selectedAreas: this.selectedAreaValues
+        // selectedCountry: this.selectedCountry,
+        // selectedState: this.selectedState,
       };
       this.router.navigate(['/doctors'], { state: { data: practitionerRequirements } });
     } else if (this.isWorldwideChecked && this.selectedCards.length <= 0) {
