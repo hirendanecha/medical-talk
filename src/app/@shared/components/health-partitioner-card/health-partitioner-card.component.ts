@@ -26,12 +26,12 @@ export class HealthPraatitionerCardComponent {
     this.profileId = Number(localStorage.getItem('profileId'));
   }
 
-  goToCommunityDetailPage(): void {
+  goToCommunityDetailPage(): void { 
     if (this.community.pageType === 'page') {
       this.router.navigate(['pages', this.community?.slug]);
     } else {
       if (this.community?.isApprove === 'Y') {
-        this.router.navigate(['doctors']);
+        this.router.navigate([`doctors/details/${this.community?.slug}`]);
       } else {
         this.toastService.danger('This community not approve yet.');
       }

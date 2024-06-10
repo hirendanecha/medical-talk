@@ -414,7 +414,7 @@ export class HealingPractitionerRegistrationComponent implements OnInit {
       this.router.navigate(['/doctors'], { state: { data: areaValues } });
     }
     else {
-      this.toastService.danger('Please select What emphasis are you interested in healing');
+      this.toastService.danger('Please select What emphasis are you interested in medical');
     }
   }
 
