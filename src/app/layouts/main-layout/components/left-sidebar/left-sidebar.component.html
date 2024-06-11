@@ -8,7 +8,6 @@
     <div class="profile-pic d-flex gap-2" routerLink="/home">
       <div class="position-relative">
         <img
-          (click)="uniqueLink()"
           class="avatar-img max-un"
           loading="lazy"
           data-src="{{ sharedService?.userData?.ProfilePicName }}"
@@ -32,6 +31,16 @@
         >
           <fa-icon [icon]="['fas', 'home']" class="font-24-px" />
           <span>Home</span>
+        </a>
+      </li>
+      <li class="ms-1">
+        <a
+          class="d-flex gap-4"
+          routerLinkActive="active"
+          (click)="uniqueLink()"
+        >
+          <fa-icon [icon]="['fas', 'square-plus']" class="font-24-px" />
+          <span>Create Unique Link</span>
         </a>
       </li>
       <li class="ms-1">
