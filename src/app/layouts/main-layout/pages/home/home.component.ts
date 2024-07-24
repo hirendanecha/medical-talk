@@ -500,8 +500,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   deleteOrLeaveCommunity(actionType: 'delete' | 'leave'): void {
     const actionTitle = actionType === 'delete' ? 'Delete' : 'Leave';
-    const modalTitle = `${actionTitle} ${this.communityDetails.pageType}`;
-    const modalMessage = `Are you sure you want to ${actionType} this ${this.communityDetails.pageType}?`;
+    const modalTitle = `${actionTitle} ${this.communityDetails.pageType === "community" ? "doctors" : "page"}`;
+    const modalMessage = `Are you sure you want to ${actionType} this ${this.communityDetails.pageType === "community" ? "doctors" : "page"}?`;
     const confirmButtonLabel = actionTitle;
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       centered: true,
