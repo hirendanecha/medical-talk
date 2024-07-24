@@ -194,6 +194,18 @@
       }},{{ communityDetails.City }}</span
     >
   </div>
+  <div class="d-sm-flex mt-4 align-items-center" *ngIf="communityDetails.applicationType">
+    <div class="d-flex flex-row align-self-baseline label">
+      <fa-icon
+        [icon]="['fas', 'circle']"
+        class="eye-icon font-14-px"
+      ></fa-icon>
+      <span class="ms-1 w-152-px">Type:</span>
+    </div>
+    <div class="category-card">
+    {{ communityDetails.applicationType }}
+    </div>
+  </div>
   <div class="d-sm-flex mt-4 align-items-center">
     <div class="d-flex flex-row align-self-baseline label">
       <fa-icon
@@ -217,7 +229,7 @@
         [icon]="['fas', 'circle']"
         class="eye-icon font-14-px"
       ></fa-icon>
-      <span class="ms-1 w-152-px">Emphasis Of Practice:</span>
+      <span class="ms-1 w-152-px">Areas Of Practice:</span>
     </div>
     <div class="d-flex flex-row flex-wrap gap-2">
       <div

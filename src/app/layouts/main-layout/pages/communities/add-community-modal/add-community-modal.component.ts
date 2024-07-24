@@ -266,6 +266,7 @@ export class AddCommunityModalComponent implements OnInit, AfterViewInit {
     formData['areas'] = filteredAreas;
     formData['removeEmphasisList'] = this.removeValues;
     formData['removeAreasList'] = this.removeAreaValues;
+    formData['applicationType'] = this.selectedApplication;
     this.communityService.editCommunity(formData, this.data.Id).subscribe({
       next: (res: any) => {
         this.spinner.hide();
