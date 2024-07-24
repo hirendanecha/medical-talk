@@ -99,7 +99,6 @@ export class PostCardComponent implements OnInit {
     public breakpointService: BreakpointService,
     public activeModal: NgbActiveModal
   ) {
-    this.router
     this.profileId = localStorage.getItem('profileId');
     afterNextRender(() => {
 
@@ -107,7 +106,7 @@ export class PostCardComponent implements OnInit {
         this.playVideo(this.post?.id);
       }
       this.socketListner();
-      this.viewComments(this.post?.id);
+      // this.viewComments(this.post?.id);
       // const contentContainer = document.createElement('div');
       // contentContainer.innerHTML = this.post.postdescription;
       // const imgTag = contentContainer.querySelector('img');
@@ -122,7 +121,7 @@ export class PostCardComponent implements OnInit {
 
   ngOnInit(): void {
     // this.socketListner();
-    // this.viewComments(this.post?.id);
+    this.viewComments(this.post?.id);
   }
 
   ngAfterViewInit(): void {
@@ -167,7 +166,6 @@ export class PostCardComponent implements OnInit {
     this.seeFirstUserService.remove(Number(this.profileId), id).subscribe({
       next: (res) => {
         this.seeFirstList.pop(id);
-        console.log(this.seeFirstList);
         this.toastService.warring('See First Stopped');
         this.getPostList?.emit();
       },
@@ -248,6 +246,7 @@ export class PostCardComponent implements OnInit {
     if (comment) {
       const modalRef = this.modalService.open(ReplyCommentModalComponent, {
         centered: true,
+
       });
       modalRef.componentInstance.title = 'Edit Comment';
       modalRef.componentInstance.confirmButtonLabel = 'Comment';
@@ -259,8 +258,11 @@ export class PostCardComponent implements OnInit {
           this.commentData.comment = res?.comment;
           this.commentData.postId = res?.postId;
           this.commentData.profileId = res?.profileId;
+          this.commentData.meta = res?.meta;
           this.commentData['id'] = res?.id;
-          this.commentData.parentCommentId = res?.parentCommentId;
+          if (res?.parentCommentId) {
+            this.commentData.parentCommentId = res?.parentCommentId;
+          }
           this.commentData['file'] = res?.file;
           this.commentData['imageUrl'] = res?.imageUrl;
           this.uploadCommentFileAndAddComment();
@@ -280,12 +282,12 @@ export class PostCardComponent implements OnInit {
         this.isParent = true;
       }
     }
-    console.log(comment);
   }
 
   deletePost(post): void {
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       centered: true,
+      backdrop: 'static',
     });
     modalRef.componentInstance.title = 'Delete Post';
     modalRef.componentInstance.confirmButtonLabel = 'Delete';
@@ -294,12 +296,6 @@ export class PostCardComponent implements OnInit {
       'Are you sure want to delete this post?';
     modalRef.result.then((res) => {
       if (res === 'success') {
-        // this.socketService.deletePost({ id: post?.id }, data => {
-        //   console.log('post-data', data)
-        // });
-        // this.getPostList.emit();
-        // this.toastService.success('Post deleted successfully');
-        // post['hide'] = true;
         this.postService.deletePost(post.id).subscribe({
           next: (res: any) => {
             if (res) {
@@ -348,7 +344,6 @@ export class PostCardComponent implements OnInit {
 
   likeDisLikePost(data): void {
     this.socketService.likeFeedPost(data, (res) => {
-      console.log('likeOrDislike', res);
       return;
     });
   }
@@ -369,8 +364,6 @@ export class PostCardComponent implements OnInit {
             res.data.commmentsList.filter((ele: any) => {
               ele.descImg = this.extractImageUrlFromContent(ele.comment);
             });
-
-            // console.log(res.data.commmentsList);
             this.commentList = res.data.commmentsList.map((ele: any) => ({
               ...ele,
               replyCommnetsList: res.data.replyCommnetsList.filter(
@@ -471,7 +464,6 @@ export class PostCardComponent implements OnInit {
 
   commentOnPost(postId, commentId = null): void {
     this.commentData.tags = getTagUsersFromAnchorTags(this.commentMessageTags);
-    console.log(this.commentData);
     if (this.isPostComment === false) {
       if (this.commentData.comment || this.commentData?.file?.name) {
         this.isPostComment = true;
@@ -603,14 +595,11 @@ export class PostCardComponent implements OnInit {
   }
 
   onTagUserInputChangeEvent(data: any): void {
-    // this.commentData.comment = data?.html;
     this.extractLargeImageFromContent(data.html);
     this.commentData.meta = data?.meta;
     this.commentMessageTags = data?.tags;
-    // console.log(this.commentData)
   }
   onTagUserReplayInputChangeEvent(data: any): void {
-    // this.commentData.comment = data?.html;
     this.extractLargeImageFromContent(data.html);
     this.commentData.meta = data?.meta;
     this.commentMessageTags = data?.tags;
@@ -626,14 +615,8 @@ export class PostCardComponent implements OnInit {
     });
 
     this.socketService.socket?.on('likeOrDislikeComments', (res) => {
-      // console.log('likeOrDislikeComments', res);
       if (res[0]) {
         if (res[0].parentCommentId) {
-          // let index = this.commentList.findIndex(obj => obj.id === res[0].parentCommentId);
-          // let index1 = this.commentList.findIndex(obj => obj.replyCommnetsList.findIndex(ele => ele.id === res[0].id));
-          // if (index1 !== -1 && index !== -1) {
-          //   this.commentList[index].replyCommnetsList[index1].likeCount = res[0]?.likeCount;
-          // }
           this.commentList.map((ele: any) =>
             res.filter((ele1) => {
               if (ele.id === ele1.parentCommentId) {
@@ -665,7 +648,6 @@ export class PostCardComponent implements OnInit {
 
     this.socketService.socket?.on('comments-on-post', (data: any) => {
       this.isPostComment = false;
-      console.log('comments-on-post', data);
       if (data[0]?.parentCommentId) {
         this.commentList.map((ele: any) =>
           data.filter((ele1) => {
@@ -749,9 +731,9 @@ export class PostCardComponent implements OnInit {
       const imgTitle = imgTag.getAttribute('title');
       const imgStyle = imgTag.getAttribute('style');
       const imageGif = imgTag
-        .getAttribute('src')
-        .toLowerCase()
-        .endsWith('.gif');
+      .getAttribute('src')
+      .toLowerCase()
+      .endsWith('.gif');
       if (!imgTitle && !imgStyle && !imageGif) {
         const copyImage = imgTag.getAttribute('src');
         const bytes = copyImage.length;
@@ -759,7 +741,6 @@ export class PostCardComponent implements OnInit {
         if (megabytes > 1) {
           let copyImageTag = '<img\\s*src\\s*=\\s*""\\s*alt\\s*="">'
           this.commentData.comment = `<div>${content.replace(copyImage, '').replace(/\<br\>/ig, '').replace(new RegExp(copyImageTag, 'g'), '')}</div>`;
-          // this.commentData.comment = content.replace(copyImage, '');
           const base64Image = copyImage
             .trim()
             .replace(/^data:image\/\w+;base64,/, '');
