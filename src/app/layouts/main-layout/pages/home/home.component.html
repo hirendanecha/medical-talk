@@ -37,7 +37,7 @@
               Edit
               {{
                 communityDetails?.pageType === "community"
-                  ? "Helth-practitioner"
+                  ? "Medicalspecialist"
                   : "page"
               }}
             </button>
@@ -69,7 +69,7 @@
                   Leave
                   {{
                     communityDetails?.pageType === "community"
-                      ? "Helth-practitioner"
+                      ? "Medicalspecialist"
                       : "page"
                   }}
                 </button>
@@ -85,7 +85,7 @@
                 Join
                 {{
                   communityDetails?.pageType === "community"
-                    ? "Helth-practitioner"
+                    ? "Medicalspecialist"
                     : "page"
                 }}
               </button>
@@ -514,7 +514,7 @@
                   (click)="createCommunityAdmin(member)"
                 >
                   <fa-icon [icon]="['fas', 'user-check']" />
-                  <span>Make {{ this.communityDetails.pageType === "community" ? "Helth-practitioner" : "page" }} member</span>
+                  <span>Make {{ this.communityDetails.pageType === "community" ? "Medicalspecialist" : "page" }} member</span>
                 </a>
               </button>
               <button ngbDropdownItem *ngIf="member?.isAdmin === 'N'">
@@ -523,12 +523,12 @@
                   (click)="createCommunityAdmin(member)"
                 >
                   <fa-icon [icon]="['fas', 'user-check']" />
-                  <span>Make {{ this.communityDetails.pageType === "community" ? "Helth-practitioner" : "page" }} admin</span>
+                  <span>Make {{ this.communityDetails.pageType === "community" ? "Medicalspecialist" : "page" }} admin</span>
                 </a>
               </button>
               <button ngbDropdownItem>
                 <a
-                  [href]="'settings/view-profile/' + member?.profileId"
+                  [routerLink]="'/settings/view-profile/' + member?.profileId"
                   class="droplist d-flex align-items-center gap-2"
                 >
                   <fa-icon [icon]="['fas', 'user']" />
@@ -571,7 +571,7 @@
         Delete
         {{
           communityDetails?.pageType === "community"
-            ? "Helth-practitioner"
+            ? "Medicalspecialist"
             : "page"
         }}
       </button>
